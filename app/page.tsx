@@ -5,47 +5,56 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
+import { Input } from "@nextui-org/input";
+import { Kbd } from "@nextui-org/kbd";
+import { SearchIcon } from "@/components/icons";
+import CardClusterHome from "@/components/cardClusterHome";
 
 export default function Home() {
+	const searchInput = (
+		<Input
+			aria-label="Search"
+			classNames={{
+				inputWrapper: "bg-default-100",
+				input: "text-sm",
+			}}
+			endContent={
+				<Kbd className="hidden lg:inline-block"  >
+					Enter
+				</Kbd>
+			}
+			labelPlacement="outside"
+			placeholder="Search Symbols..."
+			startContent={
+				<SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
+			}
+			type="search"
+			
+		/>
+	);
 	return (
 		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Make&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
+			<div className="inline-block max-w-2xl text-center justify-center">
+				<h1 className={title()}>Search for&nbsp;</h1>
+				<br/>
+				<h1 className={title({ color: "blue" })}>Stock&nbsp;</h1>
+				<h1 className={title({ color: "yellow" })}>Symbols&nbsp;</h1>
 				<br />
 				<h1 className={title()}>
-					websites regardless of your design experience.
+					to recieve comprehensive data on demand...
 				</h1>
-				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
-				</h2>
+				<div className="p-5 w-full h-full">{searchInput}</div>
+				
 			</div>
+			<div className="w-full px-10">
+			<CardClusterHome />
+			</div>
+			
 
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
-			</div>
+			
 
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
+
+			
 		</section>
 	);
 }
