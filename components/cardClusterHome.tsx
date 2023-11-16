@@ -14,8 +14,8 @@ export default function CardClusterHome() {
         path:"./card2.jpg",
     },
     {
-        title:"Earnings",
-        header:"Read through the earnings of the companies you are interested in",
+        title:"Key Metrics",
+        header:"Read through the key metrics of the companies you are interested in",
         path:"./card3.jpg",
 
     },

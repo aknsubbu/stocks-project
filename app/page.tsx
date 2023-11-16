@@ -1,3 +1,5 @@
+'use client'
+import { useState } from "react";
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code"
@@ -11,6 +13,7 @@ import { SearchIcon } from "@/components/icons";
 import CardClusterHome from "@/components/cardClusterHome";
 
 export default function Home() {
+	const [symbol, setSymbol] = useState("");
 	const searchInput = (
 		<Input
 			aria-label="Search"
@@ -29,6 +32,13 @@ export default function Home() {
 				<SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
 			}
 			type="search"
+			value={symbol}
+			onChange={(e) => setSymbol(e.target.value)}
+			onKeyDown={(e) => {
+				if (e.key === "Enter") {
+					window.location.href = `/${symbol}`;
+				}
+			}}
 			
 		/>
 	);
